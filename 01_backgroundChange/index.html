@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Changer</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(23, 202, 202);
+            padding: 50px;
+            border-radius: 50px;
+        }
+
+        .button{
+            margin-top: 50px;
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            margin-right: 20px;
+            border: 3px solid black;
+            
+        }
+        #red{
+            background-color: red;
+        }
+
+        #blue{
+            background-color: blue;
+        }
+        #grey{
+            background-color: gray;
+        }
+        #white{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>PICK A COLOR FOR BACKGROUND</h1>
+
+    <div>
+        <div class="button" id="red"></div>
+        <div class="button" id="blue"></div>
+        <div class="button" id="grey"></div>
+        <div class="button" id="white"></div>
+    </div>
+
+
+<script>
+ const buttons = document.querySelectorAll('.button');
+ const body = document.querySelector('body'); 
+ const h1 = document.querySelector('h1')
+
+ buttons.forEach( function (button){
+    button.addEventListener('click', function(e){
+        if(e.target.id === 'red' ){
+            body.style.backgroundColor = e.target.id
+            h1.style.color = 'white'
+
+        }
+
+        if(e.target.id === 'blue' ){
+            body.style.backgroundColor = e.target.id
+            h1.style.color = 'white'
+        }
+
+        if(e.target.id === 'grey' ){
+            body.style.backgroundColor = e.target.id
+            h1.style.color = 'white'
+        }
+
+        if(e.target.id === 'white' ){
+            body.style.backgroundColor = e.target.id
+            h1.style.color = 'black'
+        }
+
+    })
+ })
+</script>    
+</body>
+</html>

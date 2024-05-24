@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Sorting</title>
+<style>
+  /* Style for the button container */
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px; /* Add some margin for spacing */
+  }
+
+  /* Style for each button */
+  .button-container button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Style for each image */
+  .image-item {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <button onclick="filterImages('mobile')">Mobile</button>
+  <button onclick="filterImages('laptop')">Laptop</button>
+  <button onclick="filterImages('headphone')">Headphone</button>
+</div>
+<div class="button-container">
+  <button onclick="filterImages('', 'low')">Low Price</button>
+  <button onclick="filterImages('', 'medium')">Medium Price</button>
+  <button onclick="filterImages('', 'high')">High Price</button>
+</div>
+
+<div class="image-container" id="imageContainer">
+</div>
+
+<script>
+  // Sample image data, replace with your own image srcs and price values
+  const imageData = [
+    { category: 'mobile', src: './Saved Pictures/1076894.jpg' , price: 'low'},
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'low' },
+    { category: 'headphone', src: './Saved Pictures/7253698.png' , price: 'medium'},
+    { category: 'headphone', src: './Saved Pictures/7253698.png' , price: 'medium'},
+    { category: 'mobile', src: './Saved Pictures/1076894.jpg', price: 'high' },
+    { category: 'laptop', src: './Saved Pictures/21633.jpg' , price: 'high'},
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'low' },
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'high' },
+    { category: 'mobile', src: './Saved Pictures/1076894.jpg' , price: 'low'},
+    { category: 'headphone', src: './Saved Pictures/7253698.png' , price: 'low'},
+    
+    // ... add more image data with category and price
+  ];
+
+  let selectedCategory = 'all';
+
+  // Function to filter and display images based on category and price
+  function filterImages(category, price = '') {
+    const container = document.getElementById('imageContainer');
+    container.innerHTML = ''; // Clear previous images
+
+    // If category is provided, update selectedCategory
+    if (category) {
+      selectedCategory = category;
+    }
+
+    // Filter images based on category and price (combined logic)
+    const filteredImages = imageData.filter(image => {
+      // Check if category matches
+      const categoryMatch = selectedCategory === 'all' || image.category === selectedCategory;
+      // Check if price matches
+      const priceMatch = price === '' || image.price === price;
+      // Return true if both category and price match
+      return categoryMatch && priceMatch;
+    });
+
+    // Append filtered images to the container
+    filteredImages.forEach(image => {
+      const imgElement = document.createElement('img');
+      imgElement.src = image.src;
+      imgElement.alt = image.category;
+      imgElement.classList.add('image-item');
+      container.appendChild(imgElement);
+    });
+  }
+
+  // Display all images initially
+  filterImages('all', '');
+</script>
+
+</body>
+</html>

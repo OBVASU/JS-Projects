@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetInterval</title>
+</head>
+<body>
+    <h1>SET INTERVAL DEMO</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+
+<script>
+    const randomColor = function(){
+           // Generate random RGB values
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    // Construct the RGB color string
+    const randomColor = `rgb(${red}, ${green}, ${blue})`;
+
+    // Set the background color of the body
+    document.body.style.backgroundColor = randomColor;
+
+    }
+    
+    let interval;
+    document.querySelector('#start').addEventListener('click',function(){
+         interval = setInterval(randomColor,1000)
+    })
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(interval)
+    })
+    
+</script>
+</body>
+</html>

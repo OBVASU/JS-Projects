@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETTIME OUT</title>
+</head>
+<body>
+    <h1>Yelvish bhaiiii</h1>
+    <button id="stop">stop</button>
+
+<script>
+   const changeTxt = function(){
+    document.querySelector('h1').innerHTML = "SYSTEEMMMM....."
+   }
+
+   const change = setTimeout(changeTxt,2000);
+
+   document.querySelector('#stop').addEventListener('click',function(){
+    console.log("Elvish bhai has been arrested");
+    clearTimeout(change)
+   })
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub User Details</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto; 
+    }
+
+    .card {
+      background-color: azure;
+      border: 2px solid rgb(33, 26, 26);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 18rem; 
+    }
+
+    .card-img-top {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .card-text {
+      text-align: center;
+      margin-bottom: 10px; 
+    }
+
+    .btn-primary {
+      text-align: center;
+      font-weight: bold; 
+      border: 1px solid blueviolet;
+      color: blueviolet; 
+      padding: 10px 20px; 
+      cursor: pointer;
+      display: inline-block; 
+      border-radius: 3px    ;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="card-img-top" src="" alt="Avatar">
+    <div class="card-body">
+      <h2 class="card-title"></h2>
+      <p class="card-text"></p>
+      <button class="btn-primary">Get User Details</button>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const btn = document.querySelector('.btn-primary');
+
+    btn.addEventListener('click', function() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', requestUrl);
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          displayInfo(data);
+        } else if (xhr.status !== 200) {
+          console.error('Error fetching user data:', xhr.statusText);
+         
+        }
+      };
+
+      xhr.send();
+    });
+
+    function displayInfo(data) {
+      const img = document.querySelector('.card-img-top');
+      const name = document.querySelector('.card-title');
+      const followerCount = document.querySelector('.card-text');
+
+      img.src = data.avatar_url;
+      name.textContent = data.name;
+      followerCount.textContent = `Followers: ${data.followers}`;
+    }
+  });
+  </script>
+</body>
+</html>

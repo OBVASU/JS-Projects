@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body>
+    <ul id="images">
+        <li>
+            <img width="200px" id="chain" src="https://plus.unsplash.com/premium_photo-1674118771197-de18d929a7c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGlua3xlbnwwfHwwfHx8MA%3D%3D" alt="">
+        </li>
+
+        <li>
+            <img width="200px" id="roads" src="https://images.unsplash.com/photo-1519819286236-0b3c6506e475?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlua3xlbnwwfHwwfHx8MA%3D%3D" alt="">
+        </li>
+
+        <li>
+            <img width="200px" id="laptop" src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxpbmt8ZW58MHx8MHx8fDA%3D" alt="">
+        </li>
+
+        <li>
+            <img width="200px" id="lego" src="https://images.unsplash.com/photo-1609741200064-2ef87d5eb200?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGxpbmt8ZW58MHx8MHx8fDA%3D" alt="">
+        </li>
+
+        <li>
+            <img width="200px" id="mask" src="https://images.unsplash.com/photo-1603264046327-b7be78c98056?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGxpbmt8ZW58MHx8MHx8fDA%3D" alt="">
+        </li>
+        <li>
+            <a id="google" href="https://www.google.com">GOOGLE LINK</a>
+        </li>
+    </ul>
+
+<script>
+//    let clicked = false;
+
+// document.getElementById('chain').addEventListener('click', function(){
+//     let imgChange = document.getElementById('chain');
+    
+//     if (!clicked) {
+//         imgChange.style.borderRadius = "50%";
+//         clicked = true;
+//     } else {
+//         imgChange.style.borderRadius = "0";
+//         clicked = false;
+//     }
+// });
+
+// document.getElementById('google').addEventListener('click',function(e){
+//     e.preventDefault();
+// })
+
+document.querySelector('#images').addEventListener('click',function(e){
+    
+    if(e.target.tagName === 'IMG'){
+        let remove = e.target.parentNode
+        remove.remove();
+    }
+   
+})
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Sorting</title>
+<style>
+    /* Style for the image container */
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    /* Style for each image */
+    .image-item {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Buttons for filtering -->
+<div class="button-container">
+    <button onclick="filterImages('mobile')">Mobile</button>
+    <button onclick="filterImages('laptop')">Laptop</button>
+    <button onclick="filterImages('headphone')">Headphone</button>
+  </div>
+  <div class="button-container">
+    <button onclick="filterImages('all', 'low')">Low Price</button>
+    <button onclick="filterImages('all', 'medium')">Medium Price</button>
+    <button onclick="filterImages('all', 'high')">High Price</button>
+  </div>
+  
+
+<!-- Container for images -->
+<div class="image-container" id="imageContainer">
+    <!-- Images will be dynamically added here -->
+    
+</div>
+
+<!-- Images data -->
+<script>
+    // Sample image data, you can replace with your own image srcs
+    const imageData = [
+        { category: 'mobile', src: './Saved Pictures/1076894.jpg' },
+        { category: 'apple', src: './Saved Pictures/17735.jpg' },
+        { category: 'laptop', src: './Saved Pictures/21633.jpg' },
+        { category: 'headphone', src: './Saved Pictures/7253698.png' },
+        { category: 'headphone', src: './Saved Pictures/7253698.png' },
+        { category: 'mobile', src: './Saved Pictures/1076894.jpg' },
+        { category: 'laptop', src: './Saved Pictures/21633.jpg' },
+        { category: 'laptop', src: './Saved Pictures/21633.jpg' },
+        { category: 'laptop', src: './Saved Pictures/21633.jpg' },
+        { category: 'apple', src: './Saved Pictures/17735.jpg' },
+        { category: 'apple', src: './Saved Pictures/17735.jpg' },
+        { category: 'apple', src: './Saved Pictures/17735.jpg' },
+
+
+    ];
+
+    // Function to filter and display images based on category
+    function filterImages(category = 'all') {
+  const container = document.getElementById('imageContainer');
+  container.innerHTML = ''; // Clear previous images
+
+  // Filter images based on category
+  const filteredImages = category === 'all' ? imageData : imageData.filter(image => image.category === category);
+
+  // Append filtered images to the container
+  filteredImages.forEach(image => {
+    const imgElement = document.createElement('img');
+    imgElement.src = image.src;
+    imgElement.alt = image.category;
+    imgElement.classList.add('image-item');
+    container.appendChild(imgElement);
+  });
+}
+
+// Call the function with default argument to display all images initially
+filterImages('all');
+</script>
+
+</body>
+</html>
+<!-- const imageData = [
+    { category: 'mobile', src: './Saved Pictures/1076894.jpg' , price: 'low'},
+    { category: 'apple', src: './Saved Pictures/17735.jpg' , price: 'high'},
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'low' },
+    { category: 'headphone', src: './Saved Pictures/7253698.png' , price: 'medium'},
+    { category: 'headphone', src: './Saved Pictures/7253698.png' , price: 'medium'},
+    { category: 'mobile', src: './Saved Pictures/1076894.jpg', price: 'high' },
+    { category: 'laptop', src: './Saved Pictures/21633.jpg' , price: 'high'},
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'low' },
+    { category: 'laptop', src: './Saved Pictures/21633.jpg', price: 'high' },
+    { category: 'apple', src: './Saved Pictures/17735.jpg' , price: 'medium'},
+    { category: 'apple', src: './Saved Pictures/17735.jpg' , price: 'medium' },
+    { category: 'apple', src: './Saved Pictures/17735.jpg', price: 'low' },
+    // ... add more image data with category and price
+  ]; -->
