@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSIC APP</title>
+    <script src="https://kit.fontawesome.com/3c20094895.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .music-player{
+            background: #ffe0e5;
+            width: 400px;
+            padding: 25px 35px;
+            text-align: center; 
+            border-radius: 10px;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        nav .circle{
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #fff;
+            box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+        }
+        .music-image{
+            width: 220px;
+            border-radius: 50%;
+            object-fit: contain;
+            box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+            border: 8px solid #fff;
+        }
+        .music-player h1{
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+        .music-player p{
+            font-size: 14px;
+            color: #333;
+        }
+        #progress{
+            -webkit-appearance: none ;
+            width: 100%;
+            height: 6px;
+            background: #f53192;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 40px 0;
+        }
+        #progress::-webkit-slider-thumb{
+            -webkit-appearance: none ;
+            background: #f53192;
+            width: 30px;
+            height:30px ;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </div>
+
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+
+            <img src="images/music_1.png" class="music-image" alt="m1">
+            <h1>Hunter</h1>
+            <p>Sardar khan | GangsOfVasepur</p>
+
+            <audio controls>
+                <source src="images/Hunter Gangs Of Wasseypur 128 Kbps.mp3" type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="progress">
+
+        </div>
+    </div>
+</body>
+</html>
