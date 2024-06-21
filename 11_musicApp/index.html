@@ -19,13 +19,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-           
         }
         .music-player{
             background: #ffe0e5;
             width: 400px;
             padding: 25px 35px;
-            text-align: center; 
+            text-align: center;
             border-radius: 10px;
         }
         nav{
@@ -43,6 +42,7 @@
         }
         .music-image{
             width: 220px;
+            height: 200px;
             border-radius: 50%;
             object-fit: contain;
             box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
@@ -58,7 +58,7 @@
             color: #333;
         }
         #progress{
-            -webkit-appearance: none ;
+            -webkit-appearance: none;
             width: 100%;
             height: 6px;
             background: #f53192;
@@ -67,14 +67,36 @@
             margin: 40px 0;
         }
         #progress::-webkit-slider-thumb{
-            -webkit-appearance: none ;
+            -webkit-appearance: none;
             background: #f53192;
             width: 30px;
-            height:30px ;
+            height: 30px;
             border: 8px solid #fff;
             border-radius: 50%;
             box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
-            
+        }
+        .controls{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .controls div{
+            width: 60px;
+            height: 60px;
+            margin: 20px;
+            background: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #f53192;
+            box-shadow: 0 10px 20px rgba(255,26,0.22);
+            cursor: pointer;
+        }
+        .controls div:nth-child(2){
+            transform: scale(1.5);
+            background: #f53192;
+            color: #fff;
         }
     </style>
 </head>
@@ -91,16 +113,61 @@
                 </div>
             </nav>
 
-            <img src="images/music_1.png" class="music-image" alt="m1">
+            <img src="images/wp4238230-gangs-wallpapers.jpg" class="music-image" alt="m1">
             <h1>Hunter</h1>
             <p>Sardar khan | GangsOfVasepur</p>
 
-            <audio controls>
+            <audio  id="song">
                 <source src="images/Hunter Gangs Of Wasseypur 128 Kbps.mp3" type="audio/mpeg">
             </audio>
             <input type="range" value="0" id="progress">
 
+            <div class="controls">
+                <div><i class="fa-solid fa-backward"></i></div>
+                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrIcon"></i></div>
+                <div><i class="fa-solid fa-forward"></i></div>
+            </div>
+
         </div>
     </div>
+
+    <script>
+        let progress = document.getElementById("progress");
+        let song = document.getElementById("song");
+        let ctrIcon = document.getElementById("ctrIcon");
+
+        song.onloadeddata = function() {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+        };
+
+        song.ontimeupdate = function() {
+            progress.value = song.currentTime;
+        };
+
+        progress.oninput = function() {
+            song.currentTime = progress.value;
+        };
+
+        progress.onchange = function(){
+            song.play();
+            song.currentTime = progress.value;
+            song.play();
+            ctrIcon.classList.remove("fa-play");
+            ctrIcon.classList.add("fa-pause");
+        }
+
+        function playPause() {
+            if (ctrIcon.classList.contains("fa-pause")) {
+                song.pause();
+                ctrIcon.classList.remove("fa-pause");
+                ctrIcon.classList.add("fa-play");
+            } else {
+                song.play();
+                ctrIcon.classList.remove("fa-play");
+                ctrIcon.classList.add("fa-pause");
+            }
+        }
+    </script>
 </body>
 </html>
